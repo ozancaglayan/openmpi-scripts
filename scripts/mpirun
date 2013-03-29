@@ -1,0 +1,10 @@
+#!/bin/bash
+
+LIBDIR="lib"
+ARCH=`uname -m`
+if [[ "$ARCH" == "x86_64" ]]; then
+    LIBDIR="lib64"
+fi
+
+export OMPI_MCA_btl="^openib"
+exec /usr/$LIBDIR/openmpi/bin/mpirun $@
